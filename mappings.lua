@@ -1,55 +1,79 @@
+local cmd = function(command)
+  return table.concat({ '<CMD>', command, '<CR>' })
+end
+
 return {
   n = {
     -- disable others
-    ["<leader>h"] = false,
-
-    -- disable toggleterm
-    ["<leader>tl"] = false,
-    ["<leader>tu"] = false,
-    ["<leader>th"] = false,
-    ["<leader>tv"] = false,
+    ["<leader>fo"] = false,
+    ["<leader>h"]  = false,
 
     -- disable gitsigns
     ["<leader>gg"] = false,
+    ["<leader>gh"] = false,
     ["<leader>gj"] = false,
     ["<leader>gk"] = false,
     ["<leader>gl"] = false,
-    ["<leader>gh"] = false,
     ["<leader>gp"] = false,
-    ["<leader>gt"] = false,
     ["<leader>gu"] = false,
+
+    -- disable toggleterm
+    ["<leader>tf"] = false,
+    ["<leader>th"] = false,
+    ["<leader>tl"] = false,
+    ["<leader>tn"] = false,
+    ["<leader>tu"] = false,
+    ["<leader>tv"] = false,
 
     -- misc
     ["<Tab>"] = { "<c-w><c-w>", desc = "Move around" },
-    ["<M-]>"] = { ":BufferLineMoveNext<cr>", desc = "Move buffer right" },
-    ["<M-[>"] = { ":BufferLineMovePrev<cr>", desc = "Move buffer left" },
+    ["<M-]>"] = { cmd "BufferLineMoveNext", desc = "Move buffer right" },
+    ["<M-[>"] = { cmd "BufferLineMovePrev", desc = "Move buffer left" },
 
-    ["<leader>C"] = { "<cmd>CodeActionMenu<cr>", desc = "Code action" },
-    ["<leader>d"] = { function() require("alpha").start() end, desc = "Dashboard" },
-    ["<leader>e"] = { "<cmd>NvimTreeToggle<cr>", desc = "File explorer" },
-    ["<leader>F"] = { function() vim.lsp.buf.format(astronvim.lsp.format_opts) end, desc = "Format code" },
-    ["<leader>P"] = { "<cmd>lua require'telescope'.extensions.project.project{display_type='full'}<cr>",
+    ["<leader>C"]  = { cmd "CodeActionMenu", desc = "Code action" },
+    ["<leader>d"]  = { function() require("alpha").start() end, desc = "Dashboard" },
+    -- ["<leader>e"]  = { cmd "NvimTreeToggle", desc = "File explorer" },
+    ["<leader>fr"] = { function() require("telescope.builtin").oldfiles() end, desc = "Recent files" },
+    ["<leader>F"]  = { function() vim.lsp.buf.format(astronvim.lsp.format_opts) end, desc = "Format code" },
+    ["<leader>P"]  = { function() require("telescope").extensions.project.project { display_type = "full" } end,
       desc = "Projects" },
-    ["<leader>pr"] = { "<cmd>AstroReload<cr>", desc = "Reload config" },
+    ["<leader>pr"] = { cmd "AstroReload", desc = "Reload config" },
 
     -- window resizing
-    ["<Up>"] = { function() require("smart-splits").resize_up(2) end, desc = "Resize split up" },
-    ["<Down>"] = { function() require("smart-splits").resize_down(2) end, desc = "Resize split down" },
-    ["<Left>"] = { function() require("smart-splits").resize_left(2) end, desc = "Resize split left" },
+    ["<Up>"]    = { function() require("smart-splits").resize_up(2) end, desc = "Resize split up" },
+    ["<Down>"]  = { function() require("smart-splits").resize_down(2) end, desc = "Resize split down" },
+    ["<Left>"]  = { function() require("smart-splits").resize_left(2) end, desc = "Resize split left" },
     ["<Right>"] = { function() require("smart-splits").resize_right(2) end, desc = "Resize split right" },
-
-    -- toggle
-    ["<leader>tb"] = { function() astronvim.ui.toggle_background() end, desc = "Toggle background" },
-    ["<leader>tg"] = { function() astronvim.toggle_term_cmd "lazygit" end, desc = "ToggleTerm lazygit" },
-    ["<leader>tp"] = { function() astronvim.toggle_term_cmd "python3" end, desc = "ToggleTerm python" },
-    ["<leader>tr"] = { "<cmd>Glow<cr>", desc = "Toggle readme preview" },
-    ["<leader>ts"] = { function() require("aerial").toggle() end, desc = "Toggle symbols outline" },
-    ["<leader>tt"] = { "<cmd>Telescope colorscheme<cr>", desc = "Toggle themes" },
 
     -- git
     ["<leader>gd"] = { function() require("gitsigns").diffthis() end, desc = "Git diff" },
-    ["<leader>gL"] = { "<cmd>Octo pr list<cr>", desc = "List PRs" },
-    ["<leader>gr"] = { "<cmd>Octo pr create<cr>", desc = "Create PR" },
+    ["<leader>ge"] = { ":Octo pr edit ", desc = "Edit PR" },
+    ["<leader>gL"] = { cmd "Octo pr list", desc = "List PRs" },
+    ["<leader>gr"] = { cmd "Octo pr create", desc = "Create PR" },
+    ["<leader>gR"] = { cmd "Octo review start", desc = "Review PR" },
+    ["<leader>gS"] = { cmd "Octo review submit", desc = "Submit review" },
     ["<leader>gs"] = { function() require("telescope.builtin").git_status() end, desc = "Git status" },
+    ["<leader>gt"] = { function() astronvim.toggle_term_cmd "lazygit" end, desc = "Toggle lazygit" },
+
+    -- toggle
+    ["<leader>tb"] = { function() astronvim.ui.toggle_background() end, desc = "Toggle background" },
+    ["<leader>tc"] = { function() require("telescope.builtin").colorscheme() end, desc = "Toggle colorscheme" },
+    ["<leader>tg"] = { function() astronvim.toggle_term_cmd "lazygit" end, desc = "Toggle lazygit" },
+    ["<leader>tp"] = { function() astronvim.toggle_term_cmd "python3" end, desc = "Toggle python" },
+    ["<leader>tr"] = { cmd "Glow", desc = "Toggle readme preview" },
+    ["<leader>ts"] = { function() require("aerial").toggle() end, desc = "Toggle symbols outline" },
+    ["<leader>tt"] = { cmd "ToggleTerm direction=float", desc = "Toggle terminal" },
+
+    -- zoom
+    ["<leader>ze"] = { cmd "WindowsEqualize", desc = "Equalize" },
+    ["<leader>zh"] = { cmd "WindowsMaximizeHorizontally", desc = "Horizontally" },
+    ["<leader>zm"] = { cmd "WindowsMaximize", desc = "Maximize" },
+    ["<leader>zv"] = { cmd "WindowsMaximizeVertically", desc = "Vertically" },
+  },
+  t = {
+    ["<leader>tt"] = { "<C-\\><C-n><C-w>l", desc = "Hide terminal" },
+  },
+  v = {
+    ["<leader>a"] = { ":EasyAlign ", desc = "Easy align" },
   },
 }

@@ -1,24 +1,21 @@
 return {
   {
-    'weilbith/nvim-code-action-menu',
-    cmd = 'CodeActionMenu',
+    "weilbith/nvim-code-action-menu",
+    cmd = "CodeActionMenu"
   },
+  { "junegunn/vim-easy-align" },
   {
     "ellisonleao/glow.nvim",
     branch = "main",
     cmd = "Glow",
     config = function()
-      require("glow").setup({
-        width = 300,
-      })
+      require "user.plugins.glow"
     end,
   },
   {
     "rmagatti/goto-preview",
     config = function()
-      require("goto-preview").setup({
-        default_mappings = true,
-      })
+      require "user.plugins.goto-preview"
     end,
   },
   {
@@ -34,6 +31,7 @@ return {
       require("neoscroll").setup()
     end,
   },
+  --[[
   {
     "nvim-tree/nvim-tree.lua",
     requires = { "nvim-tree/nvim-web-devicons" },
@@ -41,6 +39,7 @@ return {
       require "user.plugins.nvim-tree"
     end
   },
+  --]]
   {
     "pwntester/octo.nvim",
     requires = {
@@ -60,32 +59,40 @@ return {
       require "user.plugins.telescope-project"
     end,
   },
-  { "godlygeek/tabular", cmd = "Tabularize" },
+  {
+    "anuvyklack/windows.nvim",
+    requires = { "anuvyklack/middleclass" },
+    config = function()
+      require('windows').setup()
+    end
+  },
 
   -- themes
   { "Mofiqul/adwaita.nvim" },
+  { "catppuccin/nvim" },
+  { "NTBBloodbath/doom-one.nvim" },
   { "Shatur/neovim-ayu" },
   { "sainnhe/edge" },
   { "rebelot/kanagawa.nvim" },
+  { "EdenEast/nightfox.nvim" },
   { "Th3Whit3Wolf/one-nvim" },
   {
     "navarasu/onedark.nvim",
     config = function()
-      require("onedark").setup {
-        style = "deep", -- dark, darker, cool, deep, warm, warmer, light
-      }
+      require "user.themes.onedark"
     end,
   },
   {
     "olimorris/onedarkpro.nvim",
     config = function()
-      require("onedarkpro").setup {
-        dark_theme = "onedark", -- onedark, onedark_vivid, onedark_dark
-        light_theme = "onelight",
-      }
+      require "user.themes.onedarkpro"
     end,
   },
+  { "rmehri01/onenord.nvim" },
+  { "folke/tokyonight.nvim" },
+  { "sainnhe/sonokai" },
+  { "glepnir/zephyr-nvim" },
 
   -- disabled plugins
-  ["nvim-neo-tree/neo-tree.nvim"] = { disable = true },
+  -- ["nvim-neo-tree/neo-tree.nvim"] = { disable = true },
 }
