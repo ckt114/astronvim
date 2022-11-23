@@ -5,8 +5,7 @@ end
 return {
   n = {
     -- disable others
-    ["<leader>fo"] = false,
-    ["<leader>h"]  = false,
+    ["<leader>h"] = false,
 
     -- disable gitsigns
     ["<leader>gg"] = false,
@@ -32,9 +31,8 @@ return {
 
     ["<leader>C"]  = { cmd "CodeActionMenu", desc = "Code action" },
     ["<leader>d"]  = { function() require("alpha").start() end, desc = "Dashboard" },
-    -- ["<leader>e"]  = { cmd "NvimTreeToggle", desc = "File explorer" },
-    ["<leader>fr"] = { function() require("telescope.builtin").oldfiles() end, desc = "Recent files" },
     ["<leader>F"]  = { function() vim.lsp.buf.format(astronvim.lsp.format_opts) end, desc = "Format code" },
+    ["<leader>fr"] = { function() require("telescope.builtin").oldfiles({ cwd_only = true }) end, desc = "Recent files" },
     ["<leader>P"]  = { function() require("telescope").extensions.project.project { display_type = "full" } end,
       desc = "Projects" },
     ["<leader>pr"] = { cmd "AstroReload", desc = "Reload config" },

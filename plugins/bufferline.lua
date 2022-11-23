@@ -7,7 +7,7 @@ if colorscheme == "adwaita" and background == "light" then
   fg = "#504e55"
   bg = "#fcfcfc"
 elseif colorscheme == "ayu-mirage" and background == "dark" then
-  fg = "#bae67e"
+  fg = "#ffd580"
   bg = "#1f2430"
 elseif colorscheme == "doom-one" and background == "light" then
   fg = "#b751b6"
