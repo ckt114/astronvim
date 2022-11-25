@@ -5,11 +5,11 @@ function hl.bufferline_hl(fg, bg)
     background = {
       bg = bg,
     },
-    buffer_visible = {
-      bg = bg,
-    },
     buffer_selected = {
       fg = fg,
+      bg = bg,
+    },
+    buffer_visible = {
       bg = bg,
     },
     close_button = {
