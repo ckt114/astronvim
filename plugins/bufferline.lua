@@ -1,8 +1,4 @@
-local colorscheme = astronvim.user_plugin_opts("colorscheme", nil, false)
-local background  = vim.o.background
-
-local fg
-local bg
+--[[
 if colorscheme == "adwaita" and background == "light" then
   fg = "#504e55"
   bg = "#fcfcfc"
@@ -22,44 +18,10 @@ elseif colorscheme == "onenord" and background == "light" then
   fg = "#387ac5"
   bg = "#f7f8fa"
 end
-
-local highlights = function()
-  return {
-    background = {
-      bg = bg,
-    },
-    buffer_visible = {
-      bg = bg,
-    },
-    buffer_selected = {
-      fg = fg,
-      bg = bg,
-    },
-    close_button = {
-      bg = bg,
-    },
-    fill = {
-      bg = bg,
-    },
-    indicator_visible = {
-      bg = bg,
-    },
-    modified = {
-      bg = bg,
-    },
-    separator = {
-      fg = bg,
-      bg = bg,
-    },
-    separator_visible = {
-      fg = bg,
-      bg = bg,
-    },
-  }
-end
+--]]
 
 return {
-  highlights = highlights,
+  highlights = bufferline_highlights,
   options = {
     indicator = {
       style = "none"
@@ -74,6 +36,7 @@ return {
       },
     },
     separator_style = "thin",
+    -- show_buffer_icons = false,
     show_buffer_close_icons = false,
     show_close_icon = false,
     sort_by = "directory",

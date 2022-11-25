@@ -1,10 +1,19 @@
 if astronvim.user_plugin_opts("colorscheme", nil, false) == "ayu-mirage" then
+  local bg = "#1f2430"
+  local fg = "#ffd580"
+  local cursor = "#191e2a"
+  local dotfile = "#c6a766"
+  local inactive = "#777777"
+
+  _G.bufferline_highlights = hl.bufferline_hl(fg, bg)
+
   return {
-    CursorLine          = { bg = "#191e2a" },
-    NeoTreeCursorLine   = { bg = "#191e2a" },
-    NeoTreeDotfile      = { fg = "#c6a766" },
-    NeoTreeTabActive    = { fg = "#ffd580", bold = true },
-    NeoTreeTabInactive  = { fg = "#777777" },
-    NeoTreeWinSeparator = { fg = "#1f2430", bg = "#1f2430" },
+    CursorLine          = { bg = cursor },
+    LineNr              = { fg = inactive },
+    NeoTreeCursorLine   = { bg = cursor },
+    NeoTreeDotfile      = { fg = dotfile },
+    NeoTreeTabActive    = { fg = fg, bold = true },
+    NeoTreeTabInactive  = { fg = inactive },
+    NeoTreeWinSeparator = { fg = bg, bg = bg },
   }
 end
