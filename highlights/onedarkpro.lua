@@ -1,5 +1,8 @@
+local highlights = {}
 if vim.o.background == "light" then
-  return hl({
-    VertSplit = "#ebebeb",
+  highlights = hl({
+    NeoTreeBackground = "#f7f7f7",
+    VertSplit         = "#ebebeb",
   })
 end
+return vim.tbl_deep_extend("force", highlights, { OctoEditable = { bg = vim.g.colors.bg } })

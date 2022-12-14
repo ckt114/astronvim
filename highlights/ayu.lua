@@ -12,6 +12,7 @@ elseif vim.g.theme_style == "mirage" then
   })
 else
   return hl({
-    VertSplit = "#ebebeb",
+    NeoTreeBackground = "#f7f7f7",
+    VertSplit         = "#ebebeb",
   })
 end

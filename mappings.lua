@@ -23,13 +23,14 @@ return {
     ["<leader>th"] = false,
     ["<leader>tl"] = false,
     ["<leader>tn"] = false,
-    ["<leader>tu"] = false,
     ["<leader>tv"] = false,
 
     -- misc
     ["<Tab>"] = { "<c-w><c-w>", desc = "Move around" },
-    ["<M-]>"] = { cmd "BufferLineMoveNext", desc = "Move buffer right" },
-    ["<M-[>"] = { cmd "BufferLineMovePrev", desc = "Move buffer left" },
+    -- ["<M-]>"] = { cmd "BufferLineMoveNext", desc = "Move buffer right" },
+    -- ["<M-[>"] = { cmd "BufferLineMovePrev", desc = "Move buffer left" },
+    ["<M-]>"] = { "<Plug>(cokeline-switch-next)", desc = "Move buffer right", silent = true },
+    ["<M-[>"] = { "<Plug>(cokeline-switch-prev)", desc = "Move buffer left", silent = true },
 
     ["<leader>C"]  = { cmd "CodeActionMenu", desc = "Code action" },
     ["<leader>d"]  = { function() require("alpha").start() end, desc = "Dashboard" },
@@ -66,6 +67,7 @@ return {
     ["<leader>tr"] = { cmd "Glow", desc = "Toggle readme preview" },
     ["<leader>ts"] = { function() require("aerial").toggle() end, desc = "Toggle symbols outline" },
     ["<leader>tt"] = { cmd "ToggleTerm direction=float", desc = "Toggle terminal" },
+    ["<leader>tu"] = { cmd "UndotreeToggle", desc = "Toggle undotree" },
 
     -- zoom
     ["<leader>ze"] = { cmd "WindowsEqualize", desc = "Equalize" },

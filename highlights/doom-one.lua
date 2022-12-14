@@ -1,6 +1,7 @@
 if vim.o.background == "light" then
   return hl({
-    VertSplit = "#ebebeb",
+    NeoTreeBackground = "#f7f7f7",
+    VertSplit         = "#ebebeb",
   })
 else
   return hl({

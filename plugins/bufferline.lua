@@ -1,13 +1,14 @@
 local highlights = function()
-  local fg = vim.g.fg
-  local bg = vim.g.bg
+  local bg      = vim.g.colors.bg
+  local primary = vim.g.colors.primary
+
   return {
     background = {
       bg = bg,
     },
     buffer_selected = {
       bg = bg,
-      fg = fg,
+      fg = primary,
       bold = true,
     },
     buffer_visible = {
@@ -21,13 +22,17 @@ local highlights = function()
     },
     duplicate_selected = {
       bg = bg,
-      fg = fg,
+      fg = primary,
       bold = true,
     },
     duplicate_visible = {
       bg = bg,
     },
     fill = {
+      bg = bg,
+    },
+    indicator_selected = {
+      fg = primary,
       bg = bg,
     },
     indicator_visible = {
@@ -51,7 +56,8 @@ return {
   highlights = highlights,
   options = {
     indicator = {
-      style = "none"
+      icon = "",
+      style = "icon"
     },
     tab_size = 0,
     offsets = {
@@ -64,7 +70,7 @@ return {
       },
     },
     separator_style = "thin",
-    show_buffer_icons = true,
+    show_buffer_icons = false,
     show_buffer_close_icons = false,
     show_close_icon = false,
     sort_by = "directory",

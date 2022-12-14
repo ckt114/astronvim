@@ -4,4 +4,9 @@ if vim.g.theme_style == "deep" then
     NeoTreeDotfile    = "#c6a766",
     VertSplit         = "#131b24",
   })
+else
+  return hl({
+    NeoTreeBackground = "#f7f7f7",
+    VertSplit         = "#ebebeb",
+  })
 end

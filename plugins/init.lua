@@ -3,7 +3,20 @@ return {
     "weilbith/nvim-code-action-menu",
     cmd = "CodeActionMenu"
   },
+  {
+    "noib3/nvim-cokeline",
+    commit = "501f93ec84af0d505d95d3827cad470b9c5e86dc",
+    config = function()
+      require "user.plugins.cokeline"
+    end,
+  },
   { "junegunn/vim-easy-align" },
+  {
+    "nvim-lualine/lualine.nvim",
+    config = function()
+      require "user.plugins.lualine"
+    end,
+  },
   {
     "ellisonleao/glow.nvim",
     branch = "main",
@@ -50,6 +63,7 @@ return {
       require "user.plugins.telescope-project"
     end,
   },
+  { "mbbill/undotree" },
   {
     "anuvyklack/windows.nvim",
     requires = { "anuvyklack/middleclass" },
@@ -78,11 +92,11 @@ return {
   },
   {
     "olimorris/onedarkpro.nvim",
+    tag = "0.7",
     config = function()
       require "user.themes.onedarkpro"
     end,
   },
-  { "rmehri01/onenord.nvim" },
   {
     "folke/tokyonight.nvim",
     config = function()
@@ -91,5 +105,6 @@ return {
   },
 
   -- disabled plugins
-  -- ["nvim-neo-tree/neo-tree.nvim"] = { disable = true },
+  ["akinsho/bufferline.nvim"] = { disable = true },
+  -- ["rebelot/heirline.nvim"] = { disable = true },
 }
