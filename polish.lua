@@ -42,6 +42,17 @@ return function()
     end, { desc = "Close buffer" })
   end
 
+  -- maximize help and show in buffer list
+  vim.api.nvim_create_autocmd('BufWinEnter', {
+    pattern = '*',
+    callback = function(event)
+      if vim.bo[event.buf].filetype == 'help' then
+        vim.cmd.only()
+        vim.bo.buflisted = true
+      end
+    end,
+  })
+
   vim.cmd("colorscheme " .. vim.g.colors_name)
   vim.lsp.set_log_level("off")
 end

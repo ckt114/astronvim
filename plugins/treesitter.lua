@@ -8,6 +8,8 @@ return {
     "lua",
     "markdown",
     "python",
+    "ruby",
+    "terraform",
     "yaml"
   },
 }
