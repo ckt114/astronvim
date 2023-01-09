@@ -1,5 +1,4 @@
--- https://github.com/pwntester/octo.nvim#%EF%B8%8F-configuration
-require("octo").setup {
+require("octo").setup({
   mappings = {
     pull_request = {
       add_comment = { lhs = "<space>gc", desc = "Add comment" },
@@ -11,4 +10,4 @@ require("octo").setup {
       open_in_browser = { lhs = "<space>gb", desc = "Open PR in browser" },
     },
   },
-}
+})

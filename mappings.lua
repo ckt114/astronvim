@@ -66,7 +66,7 @@ return {
     ["<leader>tp"] = { function() astronvim.toggle_term_cmd "python3" end, desc = "Toggle python" },
     ["<leader>tr"] = { cmd "Glow", desc = "Toggle readme preview" },
     ["<leader>ts"] = { function() require("aerial").toggle() end, desc = "Toggle symbols outline" },
-    ["<leader>tt"] = { cmd "ToggleTerm direction=float", desc = "Toggle terminal" },
+    ["<leader>tt"] = { cmd "terminal", desc = "Toggle terminal" },
     ["<leader>tu"] = { cmd "UndotreeToggle", desc = "Toggle undotree" },
 
     -- zoom
@@ -76,7 +76,8 @@ return {
     ["<leader>zv"] = { cmd "WindowsMaximizeVertically", desc = "Vertically" },
   },
   t = {
-    ["<leader>tt"] = { "<C-\\><C-n><C-w>l", desc = "Hide terminal" },
+    ["jk"] = { "<C-\\><C-n>", desc = "Terminal normal mode" },
+    ["<C-l>"] = false,
   },
   v = {
     ["<leader>a"] = { ":EasyAlign ", desc = "Easy align" },
