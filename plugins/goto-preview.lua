@@ -1,3 +1,6 @@
-require("goto-preview").setup({
-  default_mappings = true,
-})
+return {
+  "rmagatti/goto-preview",
+  opts = {
+    default_mappings = true,
+  }
+}

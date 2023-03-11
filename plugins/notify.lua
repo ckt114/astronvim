@@ -1,3 +1,6 @@
 return {
-  level = 3,
+  "rcarriga/nvim-notify",
+  opts = {
+    level = 3,
+  },
 }

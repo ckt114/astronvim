@@ -1,11 +1,11 @@
-local colors = require("user.utils.colors")
+local colors     = require("user.utils.colors")
 
-local fg        = vim.g.colors.fg
-local bg        = vim.g.colors.bg
-local primary   = vim.g.colors.primary
-local secondary = vim.g.colors.secondary or bg
-local focused   = colors.new(primary):complementary():to_rgb()
-local slant     = vim.g.slant
+local fg         = vim.g.colors.fg
+local bg         = vim.g.colors.bg
+local primary    = vim.g.colors.primary
+local secondary  = vim.g.colors.secondary or bg
+local focused    = colors.new(primary):complementary():to_rgb()
+local slant      = vim.g.slant
 
 local components = {
   space = {
@@ -49,24 +49,27 @@ local components = {
   },
 }
 
-require("cokeline").setup({
-  show_if_buffers_are_at_least = 2,
-  rendering = { max_buffer_width = 30 },
-
-  default_hl = {
-    fg = fg,
-    bg = function(buf)
-      return buf.is_focused and focused or primary
-    end,
+return {
+  "noib3/nvim-cokeline",
+  commit = "501f93ec84af0d505d95d3827cad470b9c5e86dc",
+  lazy = false,
+  opts = {
+    show_if_buffers_are_at_least = 2,
+    rendering = { max_buffer_width = 30 },
+    default_hl = {
+      fg = fg,
+      bg = function(buf)
+        return buf.is_focused and focused or primary
+      end,
+    },
+    components = {
+      components.separator_left,
+      components.space,
+      components.pointer,
+      components.unique_prefix,
+      components.filename,
+      components.space,
+      components.separator_right,
+    },
   },
-
-  components = {
-    components.separator_left,
-    components.space,
-    components.pointer,
-    components.unique_prefix,
-    components.filename,
-    components.space,
-    components.separator_right,
-  },
-})
+}
