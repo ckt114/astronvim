@@ -1,10 +1,9 @@
-local cmd         = function(command)
+local cmd     = function(command)
   return table.concat({ '<CMD>', command, '<CR>' })
 end
 
-local astro_utils = require("astronvim.utils")
-local builtin     = require("telescope.builtin")
-local utils       = require("telescope.utils")
+local utils   = require("astronvim.utils")
+local builtin = require("telescope.builtin")
 
 return {
   n = {
@@ -14,7 +13,7 @@ return {
       function()
         local bufs = vim.fn.getbufinfo { buflisted = true }
         require("astronvim.utils.buffer").close(0)
-        if require("astronvim.utils").is_available "alpha-nvim" and not bufs[2] then require("alpha").start(true) end
+        if utils.is_available "alpha-nvim" and not bufs[2] then require("alpha").start(true) end
       end,
       desc = "Close buffer",
     },
@@ -25,7 +24,7 @@ return {
     ["="]          = { "<Plug>(cokeline-switch-next)", desc = "Move buffer right", silent = true },
     ["<S-h>"]      = { "<Plug>(cokeline-focus-prev)", desc = "Focus left buffer", silent = true },
     ["<S-l>"]      = { "<Plug>(cokeline-focus-next)", desc = "Focus right buffer", silent = true },
-    -- -- git
+    -- git
     ["<leader>gd"] = { function() require("gitsigns").diffthis() end, desc = "Git diff" },
     ["<leader>ge"] = { ":Octo pr edit ", desc = "Edit PR" },
     ["<leader>gg"] = false,
@@ -37,19 +36,20 @@ return {
     ["<leader>gR"] = { cmd "Octo review start", desc = "Review PR" },
     ["<leader>gS"] = { cmd "Octo review submit", desc = "Submit review" },
     ["<leader>gs"] = { function() builtin.git_status() end, desc = "Git status" },
-    ["<leader>gt"] = { function() astro_utils.toggle_term_cmd "lazygit" end, desc = "Toggle lazygit" },
+    ["<leader>gt"] = { function() utils.toggle_term_cmd "lazygit" end, desc = "Toggle lazygit" },
     ["<leader>gu"] = false,
     -- nvim-tree
     ["<leader>e"]  = { cmd "NvimTreeToggle", desc = "Explorer" },
     ["<leader>o"]  = { cmd "NvimTreeFocus", desc = "Focus explorer" },
-    -- -- search
+    -- search
     ["<leader>fa"] = { function() builtin.autocommands() end, desc = "Find autocommands" },
     ["<leader>fH"] = { function() builtin.highlights() end, desc = "Find highlights" },
     ["<leader>fo"] = { function() builtin.oldfiles() end, desc = "Find all recent files" },
     ["<leader>fr"] = { function() builtin.oldfiles({ cwd_only = true }) end, desc = "Find recent files" },
     ["<leader>fs"] = { function() builtin.current_buffer_fuzzy_find() end, desc = "Find string in buffer" },
     ["<leader>fO"] = { function() builtin.vim_options() end, desc = "Find options" },
-    -- -- toggle
+    ["<leader>ft"] = false,
+    -- toggle
     ["<leader>tf"] = { cmd "setlocal foldmethod=indent", desc = "Toggle folding" },
     ["<leader>tl"] = false,
     ["<leader>tn"] = false,
@@ -57,14 +57,14 @@ return {
     ["<leader>ts"] = { function() require("aerial").toggle() end, desc = "Toggle outline" },
     ["<leader>tt"] = { cmd "terminal", desc = "Toggle terminal buffer" },
     ["<leader>tu"] = { cmd "UndotreeToggle", desc = "Toggle undotree" },
-    -- -- window resizing
+    -- window resizing
     ["<Up>"]       = { function() require("smart-splits").resize_up(2) end, desc = "Resize split up" },
     ["<Down>"]     = { function() require("smart-splits").resize_down(2) end, desc = "Resize split down" },
     ["<Left>"]     = { function() require("smart-splits").resize_left(2) end, desc = "Resize split left" },
     ["<Right>"]    = { function() require("smart-splits").resize_right(2) end, desc = "Resize split right" },
     ["_"]          = { function() require("smart-splits").resize_left() end, desc = "Resize split left" },
     ["+"]          = { function() require("smart-splits").resize_right() end, desc = "Resize split right" },
-    -- -- window zooming
+    -- window zooming
     ["<leader>ze"] = { cmd "WindowsEqualize", desc = "Equalize" },
     ["<leader>zh"] = { cmd "WindowsMaximizeHorizontally", desc = "Horizontally" },
     ["<leader>zm"] = { cmd "WindowsMaximize", desc = "Maximize" },

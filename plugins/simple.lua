@@ -2,7 +2,6 @@ return {
   {
     "weilbith/nvim-code-action-menu",
     cmd = "CodeActionMenu",
-    config = true,
   },
   {
     "junegunn/vim-easy-align",
@@ -11,20 +10,15 @@ return {
   {
     "ray-x/lsp_signature.nvim",
     event = "BufRead",
-    config = true,
+    opts = {},
   },
   {
     "karb94/neoscroll.nvim",
     event = "BufRead",
-    config = true,
+    opts = {},
   },
   {
     "mbbill/undotree",
     cmd = "UndotreeToggle",
-  },
-  {
-    "anuvyklack/windows.nvim",
-    dependencies = { "anuvyklack/middleclass" },
-    config = true,
   },
 }
