@@ -65,6 +65,7 @@ return {
     ["_"]          = { function() require("smart-splits").resize_left() end, desc = "Resize split left" },
     ["+"]          = { function() require("smart-splits").resize_right() end, desc = "Resize split right" },
     -- window zooming
+    ["<leader>M"]  = { cmd "WindowsMaximize", desc = "Maximize" },
     ["<leader>ze"] = { cmd "WindowsEqualize", desc = "Equalize" },
     ["<leader>zh"] = { cmd "WindowsMaximizeHorizontally", desc = "Horizontally" },
     ["<leader>zm"] = { cmd "WindowsMaximize", desc = "Maximize" },
